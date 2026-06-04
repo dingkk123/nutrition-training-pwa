@@ -24,12 +24,37 @@
         <h2>今日總覽</h2>
         <input id="selectedDate" type="date" />
       </div>
+
       <div class="stats-grid">
-        <div class="stat"><span>總熱量</span><strong id="totalCalories">0</strong><small>kcal</small></div>
-        <div class="stat"><span>蛋白質</span><strong id="totalProtein">0</strong><small>g</small></div>
-        <div class="stat"><span>碳水</span><strong id="totalCarbs">0</strong><small>g</small></div>
-        <div class="stat"><span>脂肪</span><strong id="totalFat">0</strong><small>g</small></div>
-        <div class="stat wide"><span>訓練總量</span><strong id="totalVolume">0</strong><small>kg</small></div>
+        <div class="stat">
+          <span>總熱量</span>
+          <strong id="totalCalories">0</strong>
+          <small>kcal</small>
+        </div>
+
+        <div class="stat">
+          <span>蛋白質</span>
+          <strong id="totalProtein">0</strong>
+          <small>g</small>
+        </div>
+
+        <div class="stat">
+          <span>碳水</span>
+          <strong id="totalCarbs">0</strong>
+          <small>g</small>
+        </div>
+
+        <div class="stat">
+          <span>脂肪</span>
+          <strong id="totalFat">0</strong>
+          <small>g</small>
+        </div>
+
+        <div class="stat wide">
+          <span>訓練總量</span>
+          <strong id="totalVolume">0</strong>
+          <small>kg</small>
+        </div>
       </div>
     </section>
 
@@ -43,27 +68,65 @@
     <section id="food" class="tab-panel active">
       <form id="foodForm" class="card form-card">
         <h2>新增飲食</h2>
+
         <label>餐別
           <select name="meal" required>
-            <option>早餐</option><option>午餐</option><option>晚餐</option><option>點心</option><option>宵夜</option>
+            <option>早餐</option>
+            <option>午餐</option>
+            <option>晚餐</option>
+            <option>點心</option>
+            <option>宵夜</option>
           </select>
         </label>
+
         <label>食物名稱
-            <input name="name" list="foodNameOptions" placeholder="例如：711雞肉飯飯糰、雞胸肉、白飯" required />
-            <datalist id="foodNameOptions"></datalist>
+          <input
+            name="name"
+            list="foodNameOptions"
+            placeholder="例如：711雞肉飯飯糰、雞胸肉、白飯"
+            required
+          />
+          <datalist id="foodNameOptions"></datalist>
         </label>
-        
-        <button id="useLastFoodBtn" class="ghost" type="button">套用上次吃過的資料</button>
-        <label>份量 <input name="amount" placeholder="例如：150g、1碗、2顆" /></label>
-        <div class="grid-2">
-          <label>熱量 kcal <input name="calories" type="number" min="0" step="1" required /></label>
-          <label>蛋白質 g <input name="protein" type="number" min="0" step="0.1" /></label>
-          <label>碳水 g <input name="carbs" type="number" min="0" step="0.1" /></label>
-          <label>脂肪 g <input name="fat" type="number" min="0" step="0.1" /></label>
+
+        <button id="useLastFoodBtn" class="ghost" type="button">
+          套用上次吃過的資料
+        </button>
+
+        <div class="recent-foods-box">
+          <h3>最近吃過</h3>
+          <div id="recentFoodButtons" class="quick-buttons"></div>
         </div>
-        <label>備註 <textarea name="note" rows="2" placeholder="可不填"></textarea></label>
+
+        <label>份量
+          <input name="amount" placeholder="例如：150g、1碗、2顆" />
+        </label>
+
+        <div class="grid-2">
+          <label>熱量 kcal
+            <input name="calories" type="number" min="0" step="1" required />
+          </label>
+
+          <label>蛋白質 g
+            <input name="protein" type="number" min="0" step="0.1" />
+          </label>
+
+          <label>碳水 g
+            <input name="carbs" type="number" min="0" step="0.1" />
+          </label>
+
+          <label>脂肪 g
+            <input name="fat" type="number" min="0" step="0.1" />
+          </label>
+        </div>
+
+        <label>備註
+          <textarea name="note" rows="2" placeholder="可不填"></textarea>
+        </label>
+
         <button type="submit">加入飲食</button>
       </form>
+
       <section class="card">
         <h2>當日飲食</h2>
         <div id="foodList" class="list empty-note">還沒有飲食紀錄</div>
@@ -73,20 +136,45 @@
     <section id="workout" class="tab-panel">
       <form id="workoutForm" class="card form-card">
         <h2>新增訓練</h2>
+
         <label>部位
           <select name="part" required>
-            <option>胸</option><option>背</option><option>腿</option><option>肩</option><option>手</option><option>核心</option><option>有氧</option><option>其他</option>
+            <option>胸</option>
+            <option>背</option>
+            <option>腿</option>
+            <option>肩</option>
+            <option>手</option>
+            <option>核心</option>
+            <option>有氧</option>
+            <option>其他</option>
           </select>
         </label>
-        <label>動作名稱 <input name="name" placeholder="例如：臥推、深蹲、硬舉" required /></label>
+
+        <label>動作名稱
+          <input name="name" placeholder="例如：臥推、深蹲、硬舉" required />
+        </label>
+
         <div class="grid-3">
-          <label>重量 kg <input name="weight" type="number" min="0" step="0.5" required /></label>
-          <label>組數 <input name="sets" type="number" min="1" step="1" required /></label>
-          <label>次數 <input name="reps" type="number" min="1" step="1" required /></label>
+          <label>重量 kg
+            <input name="weight" type="number" min="0" step="0.5" required />
+          </label>
+
+          <label>組數
+            <input name="sets" type="number" min="1" step="1" required />
+          </label>
+
+          <label>次數
+            <input name="reps" type="number" min="1" step="1" required />
+          </label>
         </div>
-        <label>備註 <textarea name="note" rows="2" placeholder="例如：最後一組很吃力"></textarea></label>
+
+        <label>備註
+          <textarea name="note" rows="2" placeholder="例如：最後一組很吃力"></textarea>
+        </label>
+
         <button type="submit">加入訓練</button>
       </form>
+
       <section class="card">
         <h2>當日訓練</h2>
         <div id="workoutList" class="list empty-note">還沒有訓練紀錄</div>
@@ -99,6 +187,7 @@
           <h2>歷史紀錄</h2>
           <button id="clearDateBtn" class="danger ghost">刪除當日</button>
         </div>
+
         <div id="historyList" class="history-list empty-note">尚無歷史紀錄</div>
       </section>
     </section>
@@ -106,12 +195,20 @@
     <section id="backup" class="tab-panel">
       <section class="card form-card">
         <h2>備份資料</h2>
-        <p class="muted">資料存在這台裝置的瀏覽器。換手機或清除瀏覽器資料前，記得先匯出備份。</p>
+
+        <p class="muted">
+          資料存在這台裝置的瀏覽器。換手機或清除瀏覽器資料前，記得先匯出備份。
+        </p>
+
         <button id="exportBtn">匯出 JSON</button>
+
         <label class="file-label">匯入 JSON
           <input id="importFile" type="file" accept="application/json" />
         </label>
-        <button id="clearAllBtn" class="danger" type="button">清空全部資料</button>
+
+        <button id="clearAllBtn" class="danger" type="button">
+          清空全部資料
+        </button>
       </section>
     </section>
   </main>
