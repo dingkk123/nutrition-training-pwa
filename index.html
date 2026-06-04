@@ -48,7 +48,12 @@
             <option>早餐</option><option>午餐</option><option>晚餐</option><option>點心</option><option>宵夜</option>
           </select>
         </label>
-        <label>食物名稱 <input name="name" placeholder="例如：雞胸肉、白飯、蛋" required /></label>
+        <label>食物名稱
+            <input name="name" list="foodNameOptions" placeholder="例如：711雞肉飯飯糰、雞胸肉、白飯" required />
+            <datalist id="foodNameOptions"></datalist>
+        </label>
+        
+        <button id="useLastFoodBtn" class="ghost" type="button">套用上次吃過的資料</button>
         <label>份量 <input name="amount" placeholder="例如：150g、1碗、2顆" /></label>
         <div class="grid-2">
           <label>熱量 kcal <input name="calories" type="number" min="0" step="1" required /></label>
